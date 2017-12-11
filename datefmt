@@ -1,0 +1,36 @@
+#!/bin/bash
+#title		datefmt
+#location	Copy this file to `/usr/local/bin/`
+#description	Convert timestamp to date time, or convert date time to timestamp.
+#author		zxh
+#date		2017-10-20
+#verstion	1.0
+
+function parse(){
+	input_str=$1
+	second_param=$2
+
+	if [ $input_str -gt 0 ] 2>/dev/null
+	then
+		timestamp=$input_str
+		if [ ${#timestamp} -gt 10 ]
+		then
+			timestamp=${timestamp:0:10}
+		fi
+		echo 'Date time:' $(date -r $timestamp "+%Y-%m-%d %H:%M:%S")
+	else
+		date_str=`echo $input_str $second_param`
+		echo 'Seconds:' $(date -jf "%Y-%m-%d %H:%M:%S" "$date_str" "+%s")
+		echo 'Milliseconds:' $(date -jf "%Y-%m-%d %H:%M:%S" "$date_str" "+%s000")
+	fi
+}
+
+
+if [ $1 ]
+then
+	parse $1 $2
+else
+	echo "Seconds:" $(date "+%s")
+	echo "Milliseconds:" $(date "+%s000")
+	echo "Date time:" $(date "+%Y-%m-%d %H:%M:%S")
+fi
