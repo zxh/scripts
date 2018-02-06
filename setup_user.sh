@@ -52,12 +52,12 @@ echo -n "6. Does he needs the root permissions? (y/n) "
 read root_permission
 echo "$root_permission"
 if [ $root_permission = "y" ];then
-	usermod -g root $new_user
-	echo "" >> /etc/sudoers
-	echo "# user: $new_user config start" >> /etc/sudoers
-	echo "$new_user		ALL=(ALL)       ALL" >> /etc/sudoers
-	echo "$new_user		ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
-	echo "# user: $new_user config end" >> /etc/sudoers
+	usermod -g wheel $new_user
+#	echo "" >> /etc/sudoers
+#	echo "# user: $new_user config start" >> /etc/sudoers
+#	echo "$new_user		ALL=(ALL)       ALL" >> /etc/sudoers
+#	echo "$new_user		ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
+#	echo "# user: $new_user config end" >> /etc/sudoers
 	echo "User [$new_user] already has root permission."
 elif [ $root_permission = "n" ];then
 	echo "Fine. No need to add root permission."
