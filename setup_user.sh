@@ -53,6 +53,8 @@ read root_permission
 echo "$root_permission"
 if [ $root_permission = "y" ];then
 	usermod -g wheel $new_user
+	echo "${new_user} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${new_user}
+	chmod 440 /etc/sudoers.d/${new_user}
 #	echo "" >> /etc/sudoers
 #	echo "# user: $new_user config start" >> /etc/sudoers
 #	echo "$new_user		ALL=(ALL)       ALL" >> /etc/sudoers
