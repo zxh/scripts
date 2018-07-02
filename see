@@ -1,2 +1,0 @@
-target=$1
-ps -ef | grep $target | grep -v grep | grep -v 'see '

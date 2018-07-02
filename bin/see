@@ -1,0 +1,2 @@
+target=$1
+ps -ef | grep --color=auto $target | grep -v grep | grep -v 'see '
