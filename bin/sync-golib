@@ -1,0 +1,2 @@
+export GONOSUMDB=github.com/zxh/golib
+go get -v github.com/zxh/golib@master
